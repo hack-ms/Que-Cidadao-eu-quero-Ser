@@ -38,7 +38,7 @@ export default class extends PureComponent {
         return (
             <View style={styles.box}>
                 <View style={styles.questionWrapper}>
-                    <Text lg light center>
+                    <Text light center>
                         {this.props.question}
                     </Text>
                 </View>

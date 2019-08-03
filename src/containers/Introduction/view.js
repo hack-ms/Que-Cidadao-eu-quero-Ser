@@ -1,8 +1,10 @@
 import React, {PureComponent} from "react";
-import {Container, Content, Text} from "native-base";
+import {Container, Content, Text, View} from "native-base";
 import PropTypes from "prop-types";
+import SlidingUpPanel from 'rn-sliding-up-panel';
 
 import {QuestionBox, Fading} from "~/components";
+import {Profile} from "~/containers";
 
 import styles from "./style";
 
@@ -44,19 +46,15 @@ export default class extends PureComponent {
                             }}>
                                 Não
                             </QuestionBox.Answer>
+                            <QuestionBox.Answer onPress={() => this._panel.show()}>
+                                Não sei
+                            </QuestionBox.Answer>
                         </QuestionBox>
                     </Fading>
-                    {/*{this.state.current === 0 && (<Fading onFinish={() => this.setSta    te({current: 1})}>*/}
-                    {/*    <Text lg light center>*/}
-                    {/*        Olá*/}
-                    {/*    </Text>*/}
-                    {/*</Fading>)}*/}
-                    {/*{this.state.current === 1 && (<Fading>*/}
-                    {/*    <Text lg light center>*/}
-                    {/*        Vamos fazer um teste rápido para testar seus conhecimentos...*/}
-                    {/*    </Text>*/}
-                    {/*</Fading>)}*/}
                 </Content>
+                <SlidingUpPanel ref={c => this._panel = c}>
+                    <Profile/>
+                </SlidingUpPanel>
             </Container>
         );
     }
