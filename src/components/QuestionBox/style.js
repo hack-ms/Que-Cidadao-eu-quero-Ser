@@ -17,6 +17,7 @@ const style = {
     },
     answer: {
         borderRadius: 10,
+        borderWidth: 0,
         height: "35@vs"
     }
 };

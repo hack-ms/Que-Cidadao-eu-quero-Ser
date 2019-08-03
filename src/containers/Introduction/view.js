@@ -17,8 +17,12 @@ export default class extends PureComponent {
         super(props);
         this.state = {
             current: 0,
-            show: true
+            hide: true
         }
+    }
+
+    componentDidMount(): void {
+        this.setState({hide: false})
     }
 
     render() {
@@ -26,26 +30,23 @@ export default class extends PureComponent {
         return (
             <Container>
                 <Content contentContainerStyle={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                    {this.state.show && (<Fading>
+                    <Fading hide={this.state.hide}>
                         <QuestionBox question={"Você quer saber sobre algo do seu estado?"}>
-                            <QuestionBox.Answer onPress={() => this.setState({show: false})}>
+                            <QuestionBox.Answer onPress={() => {
+                                this.setState({hide: true},
+                                    () => setTimeout(() => this.setState({hide: false}), 1500))
+                            }}>
                                 Sim
                             </QuestionBox.Answer>
-                            <QuestionBox.Answer>
+                            <QuestionBox.Answer onPress={() => {
+                                this.setState({hide: true},
+                                    () => setTimeout(() => this.setState({hide: false}), 1500))
+                            }}>
                                 Não
                             </QuestionBox.Answer>
-                            <QuestionBox.Answer>
-                                Não sei
-                            </QuestionBox.Answer>
-                            <QuestionBox.Answer>
-                                Provavelmente sim
-                            </QuestionBox.Answer>
-                            <QuestionBox.Answer>
-                                Provavelmente não
-                            </QuestionBox.Answer>
                         </QuestionBox>
-                    </Fading>)}
-                    {/*{this.state.current === 0 && (<Fading onFinish={() => this.setState({current: 1})}>*/}
+                    </Fading>
+                    {/*{this.state.current === 0 && (<Fading onFinish={() => this.setSta    te({current: 1})}>*/}
                     {/*    <Text lg light center>*/}
                     {/*        Olá*/}
                     {/*    </Text>*/}

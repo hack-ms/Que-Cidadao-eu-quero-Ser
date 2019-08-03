@@ -1,34 +1,53 @@
 import React, {PureComponent} from "react";
 import {Animated} from "react-native";
-import {Text} from "native-base";
 import PropTypes from "prop-types";
 
 export default class extends PureComponent {
 
     static propTypes = {
         fadeDuration: PropTypes.number,
+        hide: PropTypes.bool
     };
 
     static defaultProps = {
-        fadeDuration: 1000,
+        fadeDuration: 500,
+        hide: false
     };
 
     constructor(props) {
         super(props);
 
         this.state = {
-            anim: new Animated.Value(0),
+            anim: null
         }
     }
 
     componentDidMount(): void {
-        this._setFadeInAnimation()
-            .start();
+        if(this.props.hide) this.setState({anim: new Animated.Value(0)});
+        else this.setState({anim: new Animated.Value(1)});
     }
 
-    componentWillUnmount(): void {
-        this._startFadeOutAnimation();
+    componentDidUpdate(prevProps) {
+        if (prevProps.hide !== this.props.hide) {
+            if (this.props.hide) {
+                this._startFadeOutAnimation();
+            } else {
+                this._startFadeInAnimation();
+            }
+        }
     }
+
+    _startFadeInAnimation = () => {
+        this.setState({
+            anim: new Animated.Value(0)
+        }, () => this._setFadeInAnimation().start())
+    };
+
+    _startFadeOutAnimation = () => {
+        this.setState({
+            anim: new Animated.Value(1)
+        }, () => this._setFadeOutAnimation().start())
+    };
 
     _setFadeInAnimation = () => {
         const {fadeDuration} = this.props;
@@ -40,12 +59,6 @@ export default class extends PureComponent {
                 duration: fadeDuration
             }
         );
-    };
-
-    _startFadeOutAnimation = () => {
-        this.setState({
-            anim:  new Animated.Value(1)
-        }, () => this._setFadeOutAnimation.start())
     };
 
     _setFadeOutAnimation = () => {
