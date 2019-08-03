@@ -7,10 +7,13 @@ export default class extends PureComponent {
 
     static propTypes = {
         fadeDuration: PropTypes.number,
+        opaqueFor: PropTypes.number,
+        onFinish: PropTypes.func
     };
 
     static defaultProps = {
         fadeDuration: 1000,
+        opaqueFor: 2000
     };
 
     constructor(props) {
@@ -23,11 +26,7 @@ export default class extends PureComponent {
 
     componentDidMount(): void {
         this._setFadeInAnimation()
-            .start();
-    }
-
-    componentWillUnmount(): void {
-        this._startFadeOutAnimation();
+            .start(this._startFadeOutAnimation);
     }
 
     _setFadeInAnimation = () => {
@@ -43,9 +42,11 @@ export default class extends PureComponent {
     };
 
     _startFadeOutAnimation = () => {
+        const {opaqueFor, onFinish} = this.props;
+
         this.setState({
-            anim:  new Animated.Value(1)
-        }, () => this._setFadeOutAnimation.start())
+            anim: new Animated.Value(1)
+        }, () => setTimeout(() => this._setFadeOutAnimation().start(onFinish), opaqueFor));
     };
 
     _setFadeOutAnimation = () => {
