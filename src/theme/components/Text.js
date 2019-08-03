@@ -28,6 +28,12 @@ export default (variables /* : * */ = variable) => {
     ".xs": {
       fontSize: variables.DefaultFontSize*0.5
     },
+
+    //position
+    ".center": {
+      textAlign: "center"
+    },
+
     color: variables.textColor,
     '.note': {
       color: '#a7a7a7',
