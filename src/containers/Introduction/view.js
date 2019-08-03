@@ -32,25 +32,7 @@ export default class extends PureComponent {
         return (
             <Container>
                 <Content contentContainerStyle={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                    <Fading hide={this.state.hide}>
-                        <QuestionBox question={"Você quer saber sobre algo do seu estado?"}>
-                            <QuestionBox.Answer onPress={() => {
-                                this.setState({hide: true},
-                                    () => setTimeout(() => this.setState({hide: false}), 1500))
-                            }}>
-                                Sim
-                            </QuestionBox.Answer>
-                            <QuestionBox.Answer onPress={() => {
-                                this.setState({hide: true},
-                                    () => setTimeout(() => this.setState({hide: false}), 1500))
-                            }}>
-                                Não
-                            </QuestionBox.Answer>
-                            <QuestionBox.Answer onPress={() => this._panel.show()}>
-                                Não sei
-                            </QuestionBox.Answer>
-                        </QuestionBox>
-                    </Fading>
+
                 </Content>
                 <SlidingUpPanel ref={c => this._panel = c}>
                     <Profile/>

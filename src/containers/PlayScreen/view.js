@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import {Container, Content, Text, View} from "native-base";
 import PropTypes from "prop-types";
 import SlidingUpPanel from 'rn-sliding-up-panel';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 import {QuestionBox, Fading} from "~/components";
 import {Profile} from "~/containers";
@@ -18,7 +19,6 @@ export default class extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            current: 0,
             hide: true
         }
     }
@@ -30,32 +30,41 @@ export default class extends PureComponent {
     render() {
         const {navigation} = this.props;
         return (
-            <Container>
+            <GestureRecognizer
+                onSwipeUp={() => this._panel.show()}
+                style={styles.gestureContainer}
+                config={{
+                    velocityThreshold: 0,
+                    directionalOffsetThreshold: 80,
+                    gestureIsClickThreshold: 1
+                }}
+            >
                 <Content contentContainerStyle={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                    <Fading hide={this.state.hide}>
-                        <QuestionBox question={"Você quer saber sobre algo do seu estado?"}>
-                            <QuestionBox.Answer onPress={() => {
-                                this.setState({hide: true},
-                                    () => setTimeout(() => this.setState({hide: false}), 1500))
-                            }}>
-                                Sim
-                            </QuestionBox.Answer>
-                            <QuestionBox.Answer onPress={() => {
-                                this.setState({hide: true},
-                                    () => setTimeout(() => this.setState({hide: false}), 1500))
-                            }}>
-                                Não
-                            </QuestionBox.Answer>
-                            <QuestionBox.Answer onPress={() => this._panel.show()}>
-                                Não sei
-                            </QuestionBox.Answer>
-                        </QuestionBox>
-                    </Fading>
+
+                        <Fading hide={this.state.hide}>
+                            <QuestionBox question={"Você quer saber sobre algo do seu estado?"}>
+                                <QuestionBox.Answer onPress={() => {
+                                    this.setState({hide: true},
+                                        () => setTimeout(() => this.setState({hide: false}), 1500))
+                                }}>
+                                    Sim
+                                </QuestionBox.Answer>
+                                <QuestionBox.Answer onPress={() => {
+                                    this.setState({hide: true},
+                                        () => setTimeout(() => this.setState({hide: false}), 1500))
+                                }}>
+                                    Não
+                                </QuestionBox.Answer>
+                                <QuestionBox.Answer onPress={() => this._panel.show()}>
+                                    Não sei
+                                </QuestionBox.Answer>
+                            </QuestionBox>
+                        </Fading>
                 </Content>
                 <SlidingUpPanel ref={c => this._panel = c}>
                     <Profile/>
                 </SlidingUpPanel>
-            </Container>
+            </GestureRecognizer>
         );
     }
 }

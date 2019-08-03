@@ -1,8 +1,14 @@
 import {createStackNavigator} from "react-navigation";
 
-import {Introduction} from "~/containers";
+import {Introduction, PlayScreen} from "~/containers";
 
 export default createStackNavigator({
+    PlayScreen: {
+        screen: PlayScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
     Introduction: {
         screen: Introduction,
         navigationOptions: {
