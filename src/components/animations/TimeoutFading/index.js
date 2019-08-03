@@ -12,7 +12,7 @@ export default class extends PureComponent {
     };
 
     static defaultProps = {
-        fadeDuration: 1000,
+        fadeDuration: 500,
         opaqueFor: 2000
     };
 

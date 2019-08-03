@@ -22,8 +22,8 @@ export default class extends PureComponent {
 
     _calculateColor() {
         const normalizedGreen = this.props.progress * 0.01 * 255;
-        const normalizedRed = (1 - this.props.progress) * 0.01 * 255;
-        return `rgb(${Math.round(normalizedRed)},${Math.round(normalizedGreen)},0)`;
+        const normalizedRed = (100 - this.props.progress) * 0.01 * 255;
+        return `rgb(${Math.round(normalizedRed)},${Math.round(normalizedGreen)},35)`;
     }
 
     render() {

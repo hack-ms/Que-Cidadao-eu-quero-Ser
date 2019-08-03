@@ -1,10 +1,10 @@
 import React, {PureComponent} from "react";
-import {Container, Content, Text, View} from "native-base";
+import {Container, Content, Text, Icon, View} from "native-base";
 import PropTypes from "prop-types";
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
-import {QuestionBox, Fading} from "~/components";
+import {QuestionBox, Fading, UserLevel} from "~/components";
 import {Profile} from "~/containers";
 
 import styles from "./style";
@@ -39,27 +39,30 @@ export default class extends PureComponent {
                     gestureIsClickThreshold: 1
                 }}
             >
-                <Content contentContainerStyle={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-
-                        <Fading hide={this.state.hide}>
-                            <QuestionBox question={"Você quer saber sobre algo do seu estado?"}>
-                                <QuestionBox.Answer onPress={() => {
-                                    this.setState({hide: true},
-                                        () => setTimeout(() => this.setState({hide: false}), 1500))
-                                }}>
-                                    Sim
-                                </QuestionBox.Answer>
-                                <QuestionBox.Answer onPress={() => {
-                                    this.setState({hide: true},
-                                        () => setTimeout(() => this.setState({hide: false}), 1500))
-                                }}>
-                                    Não
-                                </QuestionBox.Answer>
-                                <QuestionBox.Answer onPress={() => this._panel.show()}>
-                                    Não sei
-                                </QuestionBox.Answer>
-                            </QuestionBox>
-                        </Fading>
+                <Content contentContainerStyle={styles.content}>
+                    <View>
+                        <UserLevel level={{number: 30, alias: "Cidadão Pleno"}} progress={50}/>
+                    </View>
+                    <Fading hide={this.state.hide}>
+                        <QuestionBox question={"Você quer saber sobre algo do seu estado?"}>
+                            <QuestionBox.Answer onPress={() => {
+                                this.setState({hide: true},
+                                    () => setTimeout(() => this.setState({hide: false}), 1500))
+                            }}>
+                                Sim
+                            </QuestionBox.Answer>
+                            <QuestionBox.Answer onPress={() => {
+                                this.setState({hide: true},
+                                    () => setTimeout(() => this.setState({hide: false}), 1500))
+                            }}>
+                                Não
+                            </QuestionBox.Answer>
+                            <QuestionBox.Answer onPress={() => this._panel.show()}>
+                                Não sei
+                            </QuestionBox.Answer>
+                        </QuestionBox>
+                    </Fading>
+                    <View></View>
                 </Content>
                 <SlidingUpPanel ref={c => this._panel = c}>
                     <Profile/>

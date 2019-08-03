@@ -15,4 +15,6 @@ export default createStackNavigator({
             header: null
         }
     }
+}, {
+    initialRouteName: "PlayScreen"
 })

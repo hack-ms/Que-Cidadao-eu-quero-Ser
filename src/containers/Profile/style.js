@@ -23,7 +23,7 @@ const style = {
         height: "3@vs",
         backgroundColor: "gray",
         marginBottom: 10
-    }
+    },
 };
 
 export default style;

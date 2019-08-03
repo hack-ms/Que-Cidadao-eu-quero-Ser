@@ -1,10 +1,8 @@
 import React, {PureComponent} from "react";
 import {Container, Content, Text, View} from "native-base";
 import PropTypes from "prop-types";
-import SlidingUpPanel from 'rn-sliding-up-panel';
 
-import {QuestionBox, Fading} from "~/components";
-import {Profile} from "~/containers";
+import {TimeoutFading, QuestionBox} from "~/components";
 
 import styles from "./style";
 
@@ -19,7 +17,6 @@ export default class extends PureComponent {
         super(props);
         this.state = {
             current: 0,
-            hide: true
         }
     }
 
@@ -32,11 +29,23 @@ export default class extends PureComponent {
         return (
             <Container>
                 <Content contentContainerStyle={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-
+                    {this.state.current === 0 && (<TimeoutFading onFinish={() => this.setState({current: 1})}>
+                        <Text lg light center>Olá</Text>
+                    </TimeoutFading>)}
+                    {this.state.current === 1 && (<TimeoutFading onFinish={() => this.setState({current: 2})}>
+                        <Text lg light center>Vamos começar com algumas perguntas...</Text>
+                    </TimeoutFading>)}
+                    {this.state.current === 2 && (
+                        <QuestionBox question={"Teste"}>
+                            <QuestionBox.Answer>
+                                Sim
+                            </QuestionBox.Answer>
+                            <QuestionBox.Answer>
+                                Não
+                            </QuestionBox.Answer>
+                        </QuestionBox>
+                    )}
                 </Content>
-                <SlidingUpPanel ref={c => this._panel = c}>
-                    <Profile/>
-                </SlidingUpPanel>
             </Container>
         );
     }
