@@ -7,7 +7,7 @@
 
 ## Executando
 
-Primeiramente altere o endereço do servidor no arquivo src/containers/PlayScreen/view.js:42 para seu endereço local. Não utilize localhost, mesmo no emulador.
+Primeiramente altere o endereço da api no arquivo src/containers/PlayScreen/view.js:42 para seu endereço local. Não utilize localhost, mesmo no emulador.
 
 Na branch master 
 * npm install para instalar as dependências
