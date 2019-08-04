@@ -8,14 +8,20 @@
 ## Executando
 
 Primeiramente altere o endereço da api no arquivo src/containers/PlayScreen/view.js:42 para seu endereço local. Não utilize localhost, mesmo no emulador.
+Talvez seja necessário liberar a porta 8080
 
 Na branch master 
 * npm install para instalar as dependências
 * npm start para inicializar o node
-* react-native run-android para gerar o bundle e a apk
+* react-native run-android para gerar o bundle, a apk e instalar no dispositivo
 
 Na branch server
 * npm install para instalar as dependências
 * node app para inicializar o servidor
 
 Obs: recomendo que faça o clone do repositório em duas pastas diferentes: uma para o aplicativo e a outra para o servidor
+
+
+## License
+
+Creative Commons
