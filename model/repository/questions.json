@@ -1,0 +1,301 @@
+[
+  {
+    "id": 0,
+    "question": "Você quer saber algo sobre seu estado?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 1
+      },
+      {
+        "text": "Não",
+        "jump": 8
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "question": "Você quer saber algo sobre o município em que está localizado neste momento?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 2
+      },
+      {
+        "text": "Não",
+        "jump": 100
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "A educação é um ponto crítico na formação de cidadãos plenos. Você gostaria de saber mais sobre as escolas do seu município?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 3
+      },
+      {
+        "text": "Não",
+        "jump": 100
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Você sabe quantas escolas estaduais existem em Campo Grande - MS?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 4
+      },
+      {
+        "text": "Não",
+        "jump": 100
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Quantas escolas existem em Campo Grande - MS?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": 331,
+        "jump": 12
+      },
+      {
+        "text": 90,
+        "jump": 5
+      },
+      {
+        "text": 120,
+        "jump": 12
+      },
+      {
+        "text": 244,
+        "jump": 12
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Isso mesmo! Segundo um censo escolar de 2018 existem 90 escolas em Campo Grande - MS. Você ganhou 10 pontos de cidadania!",
+    "selector": "REWARD",
+    "rewardAmount": 10,
+    "options": [
+      {
+        "text": "Continuar",
+        "jump": 6
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Há diversos fatores para se avaliar o desempenho da gestão de uma escola pública. Você gostaria de saber mais sobre os fatores de desempenho das escolas estaduais de Campo Grande - MS?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 7
+      },
+      {
+        "text": "Não",
+        "jump": 100
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Segundo dados disponibilizados pelo Governo de Mato Grosso do Sul, a escola EE PROFª. ADA TEIXEIRA DOS SANTOS PEREIRA é a escola com maior número de reprovados de 2018. Você gostaria de saber mais sobre a EE PROFª. ADA TEIXEIRA DOS SANTOS PEREIRA?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 8
+      },
+      {
+        "text": "Não",
+        "jump": 100
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "em 2018 a EE PROFª. ADA TEIXEIRA DOS SANTOS, segundo dados disponibilizados pelo Governo de Mato Grosso do Sul, contabilizou 2133 matrículas totais. Destas, foram contabilizadas 1268 aprovações, 303 transferências, 53 cancelamentos, 1 abandono e 1 falecimento.",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Continuar",
+        "jump": 0
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Segundo um censo escolar de 2018 existem 90 escolas em Campo Grande - MS",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Continuar",
+        "jump": 6
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Você quer saber algo sobre o Brasil em um todo?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 100
+      },
+      {
+        "text": "Não",
+        "jump": 11
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Você quer saber algo sobre qual estado do Brasil?",
+    "selector": "PICKER",
+    "options": [
+      {
+        "text": "Rondônia",
+        "jump": 100
+      },
+      {
+        "text": "Acre",
+        "jump": 100
+      },
+      {
+        "text": "Amazonas",
+        "jump": 100
+      },
+      {
+        "text": "Roraima",
+        "jump": 100
+      },
+      {
+        "text": "Pará",
+        "jump": 100
+      },
+      {
+        "text": "Amapá",
+        "jump": 100
+      },
+      {
+        "text": "Tocantins",
+        "jump": 100
+      },
+      {
+        "text": "Maranhão",
+        "jump": 100
+      },
+      {
+        "text": "Piauí",
+        "jump": 100
+      },
+      {
+        "text": "Ceará",
+        "jump": 100
+      },
+      {
+        "text": "Rio Grande do Norte",
+        "jump": 100
+      },
+      {
+        "text": "Paraíba",
+        "jump": 100
+      },
+      {
+        "text": "Pernambuco",
+        "jump": 100
+      },
+      {
+        "text": "Alagoas",
+        "jump": 100
+      },
+      {
+        "text": "Sergipe",
+        "jump": 100
+      },
+      {
+        "text": "Bahia",
+        "jump": 100
+      },
+      {
+        "text": "Minas Gerais",
+        "jump": 100
+      },
+      {
+        "text": "Espírito Santo",
+        "jump": 100
+      },
+      {
+        "text": "Rio de Janeiro",
+        "jump": 100
+      },
+      {
+        "text": "São Paulo",
+        "jump": 100
+      },
+      {
+        "text": "Paraná",
+        "jump": 100
+      },
+      {
+        "text": "Santa Catarina",
+        "jump": 100
+      },
+      {
+        "text": "Rio Grande do Sul",
+        "jump": 100
+      },
+      {
+        "text": "Mato Grosso do Sul",
+        "jump": 1
+      },
+      {
+        "text": "Mato Grosso",
+        "jump": 100
+      },
+      {
+        "text": "Goiás",
+        "jump": 100
+      },
+      {
+        "text": "Distrito Federal",
+        "jump": 100
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Incorreto! Existem 90 escolas estaduais em Campo Grande - MS.",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Continuar",
+        "jump": 6
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "question": "Em construção!",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Voltar",
+        "jump": 0
+      }
+    ]
+  }
+]
