@@ -25,7 +25,7 @@ export default class extends PureComponent {
     }
 
     componentDidUpdate(): void {
-        this.state.current === 3 && this.props.navigation.navigate("PlayScreen");
+        this.state.current === 4 && this.props.navigation.navigate("PlayScreen");
     }
 
     render() {
@@ -40,6 +40,9 @@ export default class extends PureComponent {
                     </TimeoutFading>)}
                     {this.state.current === 2 && (<TimeoutFading opaqueFor={3500} onFinish={() => this.setState({current: 3})}>
                         <Text lg light center>Mas não se preocupe! Nós iremos te conduzir.</Text>
+                    </TimeoutFading>)}
+                    {this.state.current === 3 && (<TimeoutFading opaqueFor={3500} onFinish={() => this.setState({current: 4})}>
+                        <Text lg light center>Responda as perguntas com a opção lhe convém. O que será que vamos descobrir hoje?</Text>
                     </TimeoutFading>)}
                 </Content>
             </Container>
