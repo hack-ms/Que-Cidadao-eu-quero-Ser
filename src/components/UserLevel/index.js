@@ -39,6 +39,7 @@ export default class extends PureComponent {
                 >
                     <Text lg bold center>{level.number}</Text>
                 </ProgressCircle>
+                <Text lg bold> Hélio </Text>
                 <Text lg light> {level.alias} </Text>
             </View>
         );
