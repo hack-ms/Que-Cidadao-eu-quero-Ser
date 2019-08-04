@@ -6,4 +6,4 @@ const router = express.Router();
 
 app.use('/questions', questionRouter);
 
-app.listen(8080, () => console.log("Servidor inicializado"));
+app.listen(8080);

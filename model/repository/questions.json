@@ -55,7 +55,7 @@
       },
       {
         "text": "Não",
-        "jump": 100
+        "jump": 9
       }
     ]
   },
@@ -153,7 +153,7 @@
     "options": [
       {
         "text": "Sim",
-        "jump": 100
+        "jump": 13
       },
       {
         "text": "Não",
@@ -295,6 +295,36 @@
       {
         "text": "Voltar",
         "jump": 0
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "A desigualdade social no Brasil se mantem firme e forte. A medida que os pobres vão ficando cada vez mais pobres, os ricos enriquecem. Gostaria de saber mais sobre a desigualdade social no Brasil?",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 100
+      },
+      {
+        "text": "Não",
+        "jump": 0
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": " ",
+    "selector": "DEFAULT",
+    "options": [
+      {
+        "text": "Sim",
+        "jump": 100
+      },
+      {
+        "text": "Não",
+        "jump": 11
       }
     ]
   }
