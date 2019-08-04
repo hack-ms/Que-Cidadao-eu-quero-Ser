@@ -39,7 +39,7 @@ export default class extends PureComponent {
             await this.setState({hide: true});
             await this._sleep(FADE_DURATION);
             await this.setState({question: null});
-            const response = await fetch(`http://192.168.2.18:8080/questions/${id}`);
+            const response = await fetch(`http://172.50.5.92:8080/questions/${id}`);
             const question = await response.json();
             question.selector === "REWARD" && await this.setState({levelProgress: question.rewardAmount});
             this.setState({question, hide: false});
