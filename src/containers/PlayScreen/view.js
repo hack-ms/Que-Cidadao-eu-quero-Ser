@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Container, Content, Text, Icon, View} from "native-base";
+import {Container, Content, Text, Icon, View, Header, Left, Body, Right} from "native-base";
 import PropTypes from "prop-types";
 import SlidingUpPanel from 'rn-sliding-up-panel';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
@@ -30,15 +30,14 @@ export default class extends PureComponent {
     render() {
         const {navigation} = this.props;
         return (
-            <GestureRecognizer
-                onSwipeUp={() => this._panel.show()}
-                style={styles.gestureContainer}
-                config={{
-                    velocityThreshold: 0,
-                    directionalOffsetThreshold: 80,
-                    gestureIsClickThreshold: 1
-                }}
-            >
+            <Container>
+                <Header transparent>
+                    <Left>
+                        {!this.props.store.isFirstAccess && (<Icon name="arrow-back"/>)}
+                    </Left>
+                    <Body/>
+                    <Right/>
+                </Header>
                 <Content contentContainerStyle={styles.content}>
                     <View>
                         <UserLevel level={{number: 30, alias: "Cidadão Pleno"}} progress={50}/>
@@ -64,10 +63,7 @@ export default class extends PureComponent {
                     </Fading>
                     <View></View>
                 </Content>
-                <SlidingUpPanel ref={c => this._panel = c}>
-                    <Profile/>
-                </SlidingUpPanel>
-            </GestureRecognizer>
+            </Container>
         );
     }
 }

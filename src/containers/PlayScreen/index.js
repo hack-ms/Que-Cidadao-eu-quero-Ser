@@ -6,7 +6,7 @@ import View from "./view";
 const mapStateToProps = state => {
     return {
         store: {
-
+            isFirstAccess: state.config.isFirstAccess
         }
     };
 };
