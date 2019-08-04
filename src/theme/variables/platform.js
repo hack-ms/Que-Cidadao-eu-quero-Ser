@@ -176,6 +176,7 @@ export default {
   fontFamily: platform === PLATFORM.IOS ? 'Quicksand' : 'Quicksand',
   fontFamilyBold: platform === PLATFORM.IOS ? 'Quicksand-Bold' : 'Quicksand-Bold',
   fontFamilyLight: platform === PLATFORM.IOS ? 'Quicksand-Light' : 'Quicksand-Light',
+  fontFamilyMedium:  platform === PLATFORM.IOS ? 'Quicksand-Medium' : 'Quicksand-Medium',
   fontSizeBase: 15,
   get fontSizeH1() {
     return this.fontSizeBase * 1.8;

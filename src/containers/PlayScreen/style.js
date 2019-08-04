@@ -1,7 +1,7 @@
 const style = {
     content: {
         flex: 1,
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         alignItems: "center"
     },
     gestureContainer: {

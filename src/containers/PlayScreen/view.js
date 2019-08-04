@@ -1,13 +1,13 @@
 import React, {PureComponent} from "react";
-import {Container, Content, Text, Icon, View, Header, Left, Body, Right} from "native-base";
+import {Body, Container, Content, Header, Icon, Left, Right, View, Picker} from "native-base";
 import PropTypes from "prop-types";
-import SlidingUpPanel from 'rn-sliding-up-panel';
-import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
-import {QuestionBox, Fading, UserLevel} from "~/components";
-import {Profile} from "~/containers";
+import {Fading, QuestionBox, UserLevel} from "~/components";
 
 import styles from "./style";
+import set from "@babel/runtime/helpers/esm/set";
+
+const FADE_DURATION = 500;
 
 export default class extends PureComponent {
 
@@ -19,16 +19,73 @@ export default class extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            levelProgress: 0,
+            question: null,
             hide: true
         }
     }
 
     componentDidMount(): void {
-        this.setState({hide: false})
+        this._getQuestion(0);
+    }
+
+    _sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    //TODO: @Helio remove from screen. Put into saga.
+    async _getQuestion(id) {
+        try {
+            await this.setState({hide: true});
+            await this._sleep(FADE_DURATION);
+            await this.setState({question: null});
+            const response = await fetch(`http://192.168.2.18:8080/questions/${id}`);
+            const question = await response.json();
+            question.selector === "REWARD" && await this.setState({levelProgress: question.rewardAmount});
+            this.setState({question, hide: false});
+        } catch (e) {
+            return e;
+        }
+    };
+
+    _renderAnswers(options, selector) {
+        if (selector === "PICKER") {
+            return (
+                <Picker
+                    onValueChange={value => this._getQuestion(value)}
+                    itemStyle={{height: 10, backgroundColor: "red"}}
+                >
+                    {
+                        options.map((option, index) => (
+                            <Picker.Item
+                                key={index}
+                                label={option.text}
+                                value={option.jump}
+                            />
+                        ))}
+                </Picker>
+            )
+        }
+        return options.map((option, index) => (
+            <QuestionBox.Answer key={index} onPress={() => this._getQuestion(option.jump)}>
+                {option.text}
+            </QuestionBox.Answer>
+        ))
+    }
+
+
+    _renderQuestionBox() {
+        const {question, options, selector} = this.state.question;
+        return (
+            <QuestionBox question={question}>
+                {
+                    this._renderAnswers(options, selector)
+                }
+            </QuestionBox>
+        )
     }
 
     render() {
-        const {navigation} = this.props;
         return (
             <Container>
                 <Header transparent>
@@ -39,29 +96,13 @@ export default class extends PureComponent {
                     <Right/>
                 </Header>
                 <Content contentContainerStyle={styles.content}>
-                    <View>
-                        <UserLevel level={{number: 30, alias: "Cidadão Pleno"}} progress={50}/>
-                    </View>
-                    <Fading hide={this.state.hide}>
-                        <QuestionBox question={"Você quer saber sobre algo do seu estado?"}>
-                            <QuestionBox.Answer onPress={() => {
-                                this.setState({hide: true},
-                                    () => setTimeout(() => this.setState({hide: false}), 1500))
-                            }}>
-                                Sim
-                            </QuestionBox.Answer>
-                            <QuestionBox.Answer onPress={() => {
-                                this.setState({hide: true},
-                                    () => setTimeout(() => this.setState({hide: false}), 1500))
-                            }}>
-                                Não
-                            </QuestionBox.Answer>
-                            <QuestionBox.Answer onPress={() => this._panel.show()}>
-                                Não sei
-                            </QuestionBox.Answer>
-                        </QuestionBox>
+                    <Fading hide={false}>
+                        <UserLevel level={{number: 0, alias: "Cidadão"}} progress={this.state.levelProgress}/>
                     </Fading>
-                    <View></View>
+                    <Fading hide={this.state.hide}>
+                        {this.state.question && this._renderQuestionBox()}
+                    </Fading>
+                    <View/>
                 </Content>
             </Container>
         );

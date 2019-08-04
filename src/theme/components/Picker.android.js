@@ -7,7 +7,7 @@ export default () => {
     },
     // width: 90,
     marginRight: -4,
-    flexGrow: 1
+    // flexGrow: 1
   };
 
   return pickerTheme;
